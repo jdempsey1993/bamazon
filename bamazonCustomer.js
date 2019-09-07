@@ -22,3 +22,14 @@ connection.connect(function(err) {
   // run the start function after the connection is made to prompt the user
   start();
 });
+
+// Prompt to ask user what they would like to buy 
+function start(){
+  inquirer
+  .prompt({
+    name: "toBuyId",
+    type: "list",
+    message: "What is the [ID] of the item you would like to purchase?",
+    choices:["ID","EXIT"]
+  })
+}
