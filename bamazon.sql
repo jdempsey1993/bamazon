@@ -4,9 +4,9 @@ USE bamazon;
 
 CREATE TABLE products(
 
-id INTEGER (10);
+item_id INTEGER (10);
 
-productName VARCHAR (45);
+product_name VARCHAR (45);
 
 department_name VARCHAR (45);
 
