@@ -29,7 +29,7 @@ function start(){
   .prompt({
     name: "toBuyId",
     type: "list",
-    message: "What is the [ID] of the item you would like to purchase?",
+    message: "Whould you like to enter an [ID] the item you would like to purchase or [EXIT]?",
     choices:["ID","EXIT"]
   })
   //Call id function
@@ -60,17 +60,3 @@ function postId() {
         message: "What is the number of units you would like to buy?"
       }
     ])
-.then (function(answer) {
-  // Insert item into DB list
-  connection.query(
-    "INSERT INTO items SET ?",
-    {
-      item_id: answer.item,
-      product_name: answer.name,
-      department_name: answer.department,
-      price: answer.price,
-      stock_quantity: answer.stock
-    }
-  )
-})
-}
