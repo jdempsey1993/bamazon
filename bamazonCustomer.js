@@ -32,4 +32,12 @@ function start(){
     message: "What is the [ID] of the item you would like to purchase?",
     choices:["ID","EXIT"]
   })
+  .then(function(answer)){
+    if (answer.toBuyId === "ID"){
+      postId()
+    }
+    else if (answer.toBuyId === "EXIT"){
+      connection.end()
+    }
+  }
 }
