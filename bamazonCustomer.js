@@ -53,6 +53,11 @@ function postId() {
         name: "item",
         type: "input",
         message: "What is the ID of the item that you would like to buy?"
+      },
+      {
+        name: "quantity",
+        type: "input",
+        message: "What is the number of units you would like to buy?"
       }
     ])
 .then (function(answer) {
