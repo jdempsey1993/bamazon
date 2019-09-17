@@ -32,12 +32,40 @@ function start(){
     message: "What is the [ID] of the item you would like to purchase?",
     choices:["ID","EXIT"]
   })
-  .then(function(answer)){
+  //Call id function
+  .then(function(answer){
     if (answer.toBuyId === "ID"){
       postId()
     }
+    /// Ending connection if user chooses exit
     else if (answer.toBuyId === "EXIT"){
       connection.end()
     }
-  }
+  })
+}
+
+//Function for calling item by ID
+function postId() {
+  //prompt user for ID of Item
+  inquirer
+    .prompt([
+      {
+        name: "item",
+        type: "input",
+        message: "What is the ID of the item that you would like to buy?"
+      }
+    ])
+.then (function(answer) {
+  // Insert item into DB list
+  connection.query(
+    "INSERT INTO items SET ?",
+    {
+      item_id: answer.item,
+      product_name: answer.name,
+      department_name: answer.department,
+      price: answer.price,
+      stock_quantity: answer.stock
+    }
+  )
+})
 }
