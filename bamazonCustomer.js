@@ -25,6 +25,7 @@ connection.connect(function(err) {
 
 // Prompt to ask user what they would like to buy 
 function start(){
+  connection.query("SELECT * FROM products", function(err,res){
   inquirer
   .prompt({
     name: "toBuyId",
@@ -42,7 +43,7 @@ function start(){
       connection.end()
     }
   })
-}
+})
 
 //Function for calling item by ID
 function postId() {
@@ -66,7 +67,7 @@ function postId() {
 
       //Define choices
       
-      var choiceItemName = answer.action.toLowerCase()
+      var choiceItemName = answer.action
 
       var choiceItemQuantity = answer.value
 
@@ -93,4 +94,5 @@ function postId() {
     }
     }
   )
+}
 }
