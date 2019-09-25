@@ -23,33 +23,35 @@ connection.connect(function(err) {
   start();
 });
 
+
+
+
 // Prompt to ask user what they would like to buy 
 function start(){
-  connection.query("SELECT * FROM products", function(err,res){
-  inquirer
-  .prompt({
+    connection.query("SELECT * FROM products", function(err,res) {
+    if (err) throw err
+    inquirer 
+    .prompt({
     name: "toBuyId",
     type: "list",
     message: "Whould you like to enter an [ID] the item you would like to purchase or [EXIT]?",
     choices:["ID","EXIT"]
-  })
-  //Call id function
-  .then(function(answer){
-    if (answer.toBuyId === "ID"){
+    })
+    //Call id function
+    .then(function(answer){
+      if (answer.toBuyId === "ID"){
       postId()
     }
-    /// Ending connection if user chooses exit
-    else if (answer.toBuyId === "EXIT"){
+      /// Ending connection if user chooses exit
+      else if (answer.toBuyId === "EXIT"){
       connection.end()
     }
   })
-})
-
-//Function for calling item by ID
-function postId() {
-  //prompt user for ID of Item
-  inquirer
-    .prompt([
+     //Function for calling item by ID
+  function postId() {
+    //prompt user for ID of Item
+      inquirer
+      .prompt([
       {
         name: "item",
         type: "input",
@@ -64,35 +66,29 @@ function postId() {
     .then(function(answer){
       
       console.log(answer)
-
-      //Define choices
+    //Define choices
       
       var choiceItemName = answer.action
-
       var choiceItemQuantity = answer.value
-
       var choiceItem
-      
-      for (let i =0; i < res.length; i++) {
-        item = res[i]
+        for (let i =0; i < res.length; i++) {
+         item = res[i]
 
         if (item.product_name === choiceItemName){
           choiceItem = item
-        }
-        
+        }       
       } console.log (choiceItem)
+          if (choiceItem.stock_quantity>= choiceItemQuantity) {
+         console.log (choiceItemQuantity + " " +choiceItem.product_name+ "sold!")
+          console.log (choiceItem.stock_quantity-choiceItemQuantity)
+          /// Update stock and process order
+          connection.query("UPDATE products SET stock_quantity=") + (chosenItem.stock_quantity - choiceItemQuantity)
+        } else { console.log ("Not enough stock, choose a smaller quantity of"+choiceItem.product_name)
+          start()
+        }
+    })
+  }
 
-      if (choiceItem.stock_quantity>= choiceItemQuantity) {
-        console.log (choiceItemQuantity + " " +choiceItem.product_name+ "sold!")
-        
-        console.log (choiceItem.stock_quantity-choiceItemQuantity)
+}
 
-        /// Update stock and process order
-        connection.query("UPDATE products SET stock_quantity=") + (chosenItem.stock_quantity - choiceItemQuantity)
-      } else { console.log ("Not enough stock, choose a small quanitity of"+choiceItem.product_name)
-      start()
-    }
-    }
-  )
-}
-}
+)}
