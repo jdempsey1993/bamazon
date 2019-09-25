@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "",
+  password: "password",
   database: "bamazon"
 });
 
@@ -60,3 +60,4 @@ function postId() {
         message: "What is the number of units you would like to buy?"
       }
     ])
+}
