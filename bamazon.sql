@@ -6,53 +6,55 @@ USE bamazon;
 
 CREATE TABLE products(
 
-item_id INT NOT NULL,
+item_id INT NOT NULL AUTO_INCREMENT,
 
-product_name VARCHAR (100) NOT NULL,
+product_name VARCHAR (100) NULL,
 
-department_name VARCHAR (100) NOT NULL,
+department_name VARCHAR (100) NULL,
 
-price INTEGER(100) NOT NULL,
+stock_quantity INTEGER(100) NULL,   
 
-stock_quantity INTEGER(100) NOT NULL
+price DECIMAL(10,2) NULL,
+
+PRIMARY KEY(item_id)
 ); 
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(1, "Laptop", "Electronics", 790, 13);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(1, "Laptop", "Electronics", 13, 799.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(2, "Desktop Computer", "Electronics", 950, 9);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(2, "Desktop Computer", "Electronics", 9, 950.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(3, "iPhone", "Electronics", 1000, 27);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(3, "iPhone", "Electronics", 27, 999.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(4, "Samsung Galaxy", "Electronics", 899, 20);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(4, "Samsung Galaxy", "Electronics", 20, 899.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(5, "Airpods", "Electronics", 199, 32);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(5, "Airpods", "Electronics", 32, 149.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(6, "3.5 MM Headphones", "Electronics", 29, 51);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(6, "3.5 MM Headphones", "Electronics", 51, 29.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(7, "128 GB SD Card", "Electronics", 39, 47);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(7, "128 GB SD Card", "Electronics", 47, 39.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(8, "USB Charger", "Electronics", 29, 63);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(8, "USB Charger", "Electronics", 63, 29.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(9, "Nintendo Switch", "Electronics", 299, 17);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(9, "Nintendo Switch", "Electronics", 17, 249.99);
 
 INSERT INTO products
-(item_id, product_name, department_name, price, stock_quantity)
-VALUES(10, "4k Televison", "Electronics", 1500, 7);
+(item_id, product_name, department_name, stock_quantity, price)
+VALUES(10, "4k Televison", "Electronics", 7, 1499.99);

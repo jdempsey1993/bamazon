@@ -30,6 +30,7 @@ connection.connect(function(err) {
 function start(){
     connection.query("SELECT * FROM products", function(err,res) {
     if (err) throw err
+    console.log(res)
     inquirer 
     .prompt({
     name: "toBuyId",
@@ -68,8 +69,8 @@ function start(){
       console.log(answer)
     //Define choices
       
-      var choiceItemName = answer.action
-      var choiceItemQuantity = answer.value
+      var choiceItemName = answer.item
+      var choiceItemQuantity = answer.quantity
       var choiceItem
         for (let i =0; i < res.length; i++) {
          item = res[i]
@@ -78,8 +79,12 @@ function start(){
           choiceItem = item
         }       
       } console.log (choiceItem)
-          if (choiceItem.stock_quantity>= choiceItemQuantity) {
-         console.log (choiceItemQuantity + " " +choiceItem.product_name+ "sold!")
+        console.log (item)
+        console.log (choiceItemName)
+        console.log (choiceItemQuantity)
+          if (choiceItem.stock_quantity >= choiceItemQuantity) {
+        
+            console.log (choiceItemQuantity + " " +choiceItem.product_name+ "sold!")
           console.log (choiceItem.stock_quantity-choiceItemQuantity)
           /// Update stock and process order
           connection.query("UPDATE products SET stock_quantity=") + (chosenItem.stock_quantity - choiceItemQuantity)
