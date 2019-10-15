@@ -88,12 +88,12 @@ function start(){
         console.log (choiceItemQuantity)
           if (choiceItem.stock_quantity >= choiceItemQuantity) {
         
-            console.log (choiceItemQuantity + " " +choiceItem.product_name+ "sold!")
+            console.log (choiceItemQuantity + " " +choiceItem.product_name+ " sold!")``
           // console.log (choiceItem.stock_quantity-choiceItemQuantity)
           /// Update stock and process order
           var query = "UPDATE products SET stock_quantity = " + (choiceItem.stock_quantity - choiceItemQuantity) + "WHERE item_id = " + choiceItemId + ";"
-          connection.query(query, function(err, result){
-            console.log("inside");
+          
+            connection.query(query, function(err, result){
           });
         } else { console.log ("Not enough stock, choose a smaller quantity of"+choiceItem.product_name)
           start()
