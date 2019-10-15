@@ -69,25 +69,32 @@ function start(){
       console.log(answer)
     //Define choices
       
-      var choiceItemName = answer.item
-      var choiceItemQuantity = answer.quantity
-      var choiceItem
+      var choiceItemId = parseInt(answer.item)
+      var choiceItemQuantity = parseInt(answer.quantity)
+      var choiceItem = res[0]
+      console.log(res)
         for (let i =0; i < res.length; i++) {
-         item = res[i]
-
-        if (item.product_name === choiceItemName){
+        var item = res[i]
+          ///  Need to comapare item_id 
+          console.log(item)
+          console.log(item.item_id);
+          console.log(choiceItemId)
+        if (item.item_id == choiceItemId){
           choiceItem = item
         }       
       } console.log (choiceItem)
         console.log (item)
-        console.log (choiceItemName)
+        console.log (choiceItemId)
         console.log (choiceItemQuantity)
           if (choiceItem.stock_quantity >= choiceItemQuantity) {
         
             console.log (choiceItemQuantity + " " +choiceItem.product_name+ "sold!")
-          console.log (choiceItem.stock_quantity-choiceItemQuantity)
+          // console.log (choiceItem.stock_quantity-choiceItemQuantity)
           /// Update stock and process order
-          connection.query("UPDATE products SET stock_quantity=") + (chosenItem.stock_quantity - choiceItemQuantity)
+          var query = "UPDATE products SET stock_quantity = " + (choiceItem.stock_quantity - choiceItemQuantity) + "WHERE item_id = " + choiceItemId + ";"
+          connection.query(query, function(err, result){
+            console.log("inside");
+          });
         } else { console.log ("Not enough stock, choose a smaller quantity of"+choiceItem.product_name)
           start()
         }
