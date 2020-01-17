@@ -19,6 +19,15 @@ SSH:
 ```
 $ git clone git@github.com:jdempsey1993/bamazon.git
 ```
+After cloned, change directory into the cloned repository and install npm depedencies:
+```
+$ npm install
+```
+The application can be run by issuing the the following command:
+```
+$ node BamazonCustomer.js
+```
+
 Created with:
 ---
 * Node.js
